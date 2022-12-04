@@ -19,14 +19,13 @@ public class SaleService {
 	@Autowired
 	private SaleRepository repo;
 	
-	public Page<Sale> findSale(String minDate,String maxDate, Pageable page){
-		
-		LocalDate today =LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
-		
-		LocalDate min = minDate.equals("") ? today : LocalDate.parse(minDate);
-		LocalDate max = maxDate.equals("") ? today.minusDays(365) :  LocalDate.parse(maxDate);
-		
-		return repo.findSales(min,max,page);
-		
+	public Page<Sale> findSales(String minDate, String maxDate, Pageable pageable) {
+
+		LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
+
+		LocalDate min = minDate.equals("") ? today.minusDays(365) : LocalDate.parse(minDate);
+		LocalDate max = maxDate.equals("") ? today : LocalDate.parse(maxDate);
+
+		return repo.findSales(min, max, pageable); 
 	}
 }

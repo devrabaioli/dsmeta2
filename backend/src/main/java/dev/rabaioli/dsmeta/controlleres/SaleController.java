@@ -28,11 +28,10 @@ public class SaleController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public Page<Sale> findSales(
-			@RequestParam(value="minDate",defaultValue = "") String minDate,
-			@RequestParam(value="maxDate",defaultValue = "") String maxDate,
-			Pageable page){
-		
-		return service.findSale(minDate,maxDate,page);
+			@RequestParam(value="minDate", defaultValue = "") String minDate, 
+			@RequestParam(value="maxDate", defaultValue = "") String maxDate, 
+			Pageable pageable) {
+		return service.findSales(minDate, maxDate, pageable);
 	}
 	
 	@GetMapping("/{id}/notification")
